@@ -60,3 +60,11 @@ minusBtns.forEach((minus) => {
         }
     });
 });
+
+// Summary of Code Sections:
+// Selecting Elements: Grabs necessary elements (icons, quantities, prices, and cards) and stores them in arrays for easy manipulation.
+// updateTotal() Function: Loops through each product, calculates the total cost based on quantity and price, and updates the displayed total.
+// Toggling Favorite: Changes color of the heart icon when clicked, representing a favorite or unfavorite action.
+// Removing Cards: Deletes the product card when the trash icon is clicked and recalculates the total price.
+// Incrementing Quantity: Increases the quantity of a product when the plus icon is clicked and updates the total.
+// Decrementing Quantity: Decreases the quantity of a product if it’s above zero and updates the total.
