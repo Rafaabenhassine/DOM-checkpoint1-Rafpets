@@ -1,7 +1,13 @@
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
+/* Header Section */
 .rafpets-header {
     text-align: center;
     margin: 20px 0;
@@ -10,38 +16,56 @@ body {
 .rafpets-header h1 {
     font-size: 2.5em;
     color: #4a4a4a;
+    margin-bottom: 10px;
 }
 
 .rafpets-header img {
     width: 100%;
     max-width: 600px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Total Price Section */
 .total-price {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
-    margin: 20px 0;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-weight: bold;
 }
 
+.total-price span {
+    color: #2a9d8f;
+}
+
+/* Product Cards Container */
 #product-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 20px;
 }
 
+/* Product Card Styling */
 .card {
     width: 18rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    position: relative;
 }
 
-.card .card-body {
-    text-align: center;
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card img {
@@ -50,14 +74,100 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.card .price {
-    font-weight: bold;
-    color: #3a3a3a;
+.card .card-body {
+    text-align: center;
+    padding: 15px;
 }
 
+.card .price {
+    font-weight: bold;
+    color: #e63946;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* Card Actions */
 .card .actions {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
+    gap: 10px;
+}
+
+/* Icon Styling */
+.actions i {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #4a4a4a;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.actions i:hover {
+    color: #e63946;
+    transform: scale(1.2);
+}
+
+/* Add to Cart Button */
+.card .add-to-cart {
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card .add-to-cart:hover {
+    background-color: #1e8068;
+}
+
+/* External Cart Section */
+.cart-summary {
+    position: fixed; /* Keeps it visible as you scroll */
+    top: 10px;
+    right: 20px;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .cart-summary h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .cart-summary p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+.cart-summary .cart-details {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.cart-summary .cart-total {
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #4a4a4a;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
 }

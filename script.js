@@ -1,70 +1,134 @@
-// Selecting necessary elements
-// Collect all elements with specific icons into arrays to manage actions for each product card.
-const favs = Array.from(document.querySelectorAll(".fa-heart"));   // Array of favorite icons (hearts) for each card
-const deleteBtns = Array.from(document.querySelectorAll(".fa-trash")); // Array of delete icons (trash cans) for each card
-const plusBtns = Array.from(document.querySelectorAll(".fa-plus"));  // Array of plus icons for increasing quantity
-const minusBtns = Array.from(document.querySelectorAll(".fa-minus")); // Array of minus icons for decreasing quantity
-const cards = Array.from(document.querySelectorAll(".card"));        // Array of product cards for removal or other actions
+// Get the parent container holding all product cards
+const productCards = document.getElementById("product-cards");
 
 // Function to update total price
 function updateTotal() {
-    // Collect all quantity and price elements from the DOM
-    let quantities = Array.from(document.querySelectorAll(".qte")); // Array of quantity displays for each card
-    let prices = Array.from(document.querySelectorAll(".price"));   // Array of price displays for each card
-    
-    // Initialize total price to zero
-    let total = 0;
+    const quantities = document.querySelectorAll(".qte");
+    const prices = document.querySelectorAll(".price");
 
-    // Loop through each quantity, calculate the cost for each card, and add it to the total
+    let total = 0;
     quantities.forEach((qte, i) => {
-        total += parseInt(qte.innerHTML) * parseFloat(prices[i].innerHTML); // Calculate quantity * price for each product
+        total += parseInt(qte.innerText) * parseFloat(prices[i].innerText);
     });
 
-    // Update the total price display in the DOM
-    document.querySelector(".totalprice").innerHTML = total;
+    document.querySelector(".totalprice").innerText = `$${total.toFixed(2)}`;
 }
 
-// Toggle favorite color
-// Adds click event to each favorite icon to toggle its color between red (favorite) and black (not favorite).
-favs.forEach((fav) => {
-    fav.addEventListener("click", () => {
-        fav.style.color = fav.style.color !== "red" ? "red" : "black"; // If not red, make red; otherwise, make black
-    });
-});
+// Event delegation for actions
+productCards.addEventListener("click", (e) => {
+    const target = e.target;
 
-// Remove card
-// Adds click event to each delete button to remove the associated card from the DOM.
-deleteBtns.forEach((deleteBtn, i) => {
-    deleteBtn.addEventListener("click", () => {
-        cards[i].remove();     // Remove the card element corresponding to the delete button
-        updateTotal();         // Recalculate the total price after removing the card
-    });
-});
+    // Increment quantity
+    if (target.classList.contains("fa-plus")) {
+        const quantity = target.parentNode.querySelector(".qte"); // Find quantity in the same action section
+        quantity.innerText = parseInt(quantity.innerText) + 1;
+        updateTotal();
+    }
 
-// Increment quantity
-// Adds click event to each plus button to increase the quantity displayed and update the total price.
-plusBtns.forEach((plus) => {
-    plus.addEventListener("click", () => {
-        plus.nextElementSibling.innerHTML++; // Increase the quantity number displayed next to the plus button
-        updateTotal();                       // Recalculate the total price with the new quantity
-    });
-});
-
-// Decrement quantity
-// Adds click event to each minus button to decrease the quantity displayed, ensuring it doesn’t go below zero, and updates the total.
-minusBtns.forEach((minus) => {
-    minus.addEventListener("click", () => {
-        if (minus.previousElementSibling.innerHTML > 0) { // Check if quantity is above zero
-            minus.previousElementSibling.innerHTML--;    // Decrease quantity number displayed next to the minus button
-            updateTotal();                               // Recalculate the total price with the new quantity
+    // Decrement quantity
+    if (target.classList.contains("fa-minus")) {
+        const quantity = target.parentNode.querySelector(".qte"); // Find quantity in the same action section
+        if (parseInt(quantity.innerText) > 0) {
+            quantity.innerText = parseInt(quantity.innerText) - 1;
+            updateTotal();
         }
-    });
+    }
+
+    // Additional functionality: Toggle favorite
+    if (target.classList.contains("fa-heart")) {
+        target.style.color = target.style.color === "red" ? "black" : "red";
+    }
+
+    // Remove card
+    if (target.classList.contains("fa-trash")) {
+        const card = target.closest(".card");
+        card.remove(); // Remove the entire card
+        updateTotal();
+    }
+
+    // Add to cart
+    if (target.classList.contains("add-to-cart")) {
+        const card = target.closest(".card");
+        const price = parseFloat(card.querySelector(".price").innerText);
+        const quantity = parseInt(card.querySelector(".qte").innerText);
+
+        if (quantity > 0) {
+            totalItems += quantity;
+            totalAmount += price * quantity;
+
+            // Reset quantity on card
+            card.querySelector(".qte").innerText = 0;
+
+            updateCartSummary();
+            updateTotal();
+        } else {
+            alert("Veuillez sélectionner une quantité avant d'ajouter au panier !");
+        }
+    }
 });
 
-// Summary of Code Sections:
-// Selecting Elements: Grabs necessary elements (icons, quantities, prices, and cards) and stores them in arrays for easy manipulation.
-// updateTotal() Function: Loops through each product, calculates the total cost based on quantity and price, and updates the displayed total.
-// Toggling Favorite: Changes color of the heart icon when clicked, representing a favorite or unfavorite action.
-// Removing Cards: Deletes the product card when the trash icon is clicked and recalculates the total price.
-// Incrementing Quantity: Increases the quantity of a product when the plus icon is clicked and updates the total.
-// Decrementing Quantity: Decreases the quantity of a product if it’s above zero and updates the total.
+// Update external cart summary
+function updateCartSummary() {
+    const cartItems = document.querySelector(".cart-items");
+    const cartTotal = document.querySelector(".cart-total");
+
+    cartItems.innerText = totalItems;
+    cartTotal.innerText = `$${totalAmount.toFixed(2)}`;
+}
+
+
+
+// External cart summary variables
+let totalItems = 0; // Total items in the cart
+let totalAmount = 0; // Total price of items in the cart
+
+// Function to update the external cart summary
+function updateCartSummary() {
+    const cartItems = document.querySelector(".cart-items");
+    const cartTotal = document.querySelector(".cart-total");
+
+    cartItems.innerText = totalItems;
+    cartTotal.innerText = `$${totalAmount.toFixed(2)}`;
+}
+
+// Event listener for actions
+productCards.addEventListener("click", (e) => {
+    const target = e.target;
+
+    // Add to cart
+    if (target.classList.contains("add-to-cart")) {
+        const card = target.closest(".card");
+        const price = parseFloat(card.querySelector(".price").innerText);
+        const quantity = parseInt(card.querySelector(".qte").innerText);
+
+        if (quantity > 0) {
+            // Update cart totals
+            totalItems += quantity;
+            totalAmount += price * quantity;
+
+            // Reset card quantity
+            card.querySelector(".qte").innerText = 0;
+
+            // Update external cart and total price
+            updateCartSummary();
+            updateTotal();
+        } else {
+            alert("Veuillez sélectionner une quantité avant d'ajouter au panier !");
+        }
+    }
+
+    // Remove card (adjust external cart)
+    if (target.classList.contains("fa-trash")) {
+        const card = target.closest(".card");
+        const price = parseFloat(card.querySelector(".price").innerText);
+        const quantity = parseInt(card.querySelector(".qte").innerText);
+
+        // Adjust external cart totals
+        totalItems -= quantity;
+        totalAmount -= price * quantity;
+
+        card.remove(); // Remove the card
+        updateCartSummary();
+        updateTotal();
+    }
+});

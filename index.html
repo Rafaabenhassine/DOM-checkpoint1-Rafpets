@@ -6,7 +6,7 @@
     <!-- link css fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- title  -->
-    <title>Rafpets</title>
+    <title>Rafpets - Produits Animaliers</title>
     <!-- icon for rafpets page  -->
     <link rel="icon" href="./icon pattes.jpg" />
     <!--  lien css bootstrap  -->
@@ -15,9 +15,14 @@
     <link rel="stylesheet" href="style.css" />
     <!-- Responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <header>
+     <!-- Header Section -->
+     <header class="rafpets-header">
+      
+        
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,12 +59,18 @@
             </button>
           </form>
         </div>
+        <section class="cart-summary">
+          <h2>Panier</h2>
+          <p>Articles: <span class="cart-items">0</span></p>
+          <p>Total: <span class="cart-total">0</span> $</p>
+        </section>
+        
       </nav>
     </header>
 
     <main>
       <section class="rafpets-header">
-        <h1>Produits Pour Animaux</h1>
+        <h1>Bienvenue chez Rafpets</h1>
         <img src="./rafpets.jpg" alt="Rafpets" />
       </section>
       <section class="total-price">
@@ -77,18 +88,14 @@
             <h5 class="card-title">Julius k9 Harnais IDC-POWER Camouflage</h5>
             <p class="card-text">price :</p>
             <p class="price">120</p>
-            <div style="display: flex">
-              <!-- plus icon from font awesome  -->
-              <i class="fa-solid fa-plus"></i>
-              <!-- begin of compter  -->
-              <p class="qte">0</p>
-              <!-- minus icon from font awesome -->
-              <i class="fa-solid fa-minus"></i>
-              <!-- heart icon from font awesome  -->
-              <i class="fa-solid fa-heart"></i>
-              <!-- trash icon from font awesome  -->
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -104,13 +111,14 @@
             </h5>
             <p class="card-text">price :</p>
             <p class="price">19</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -124,13 +132,14 @@
             <h5 class="card-title">Beeztees Laisse Parinka rouge 120 cm</h5>
             <p class="card-text">price :</p>
             <p class="price">45</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -144,13 +153,14 @@
             <h5 class="card-title">Flexi Design Dots 5m de longueur</h5>
             <p class="card-text">price :</p>
             <p class="price">38</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -164,13 +174,14 @@
             <h5 class="card-title">Felican Cuir Laisse d'exposition Corde</h5>
             <p class="card-text">price :</p>
             <p class="price">90</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -184,13 +195,14 @@
             <h5 class="card-title">Felican Cuir Laisse d'exposition Corde</h5>
             <p class="card-text">price :</p>
             <p class="price">90</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -204,13 +216,14 @@
             <h5 class="card-title">Felican Cuir Laisse d'exposition Corde</h5>
             <p class="card-text">price :</p>
             <p class="price">90</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
 
@@ -224,20 +237,21 @@
             <h5 class="card-title">Felican Cuir Laisse d'exposition Corde</h5>
             <p class="card-text">price :</p>
             <p class="price">90</p>
-            <div style="display: flex">
-              <i class="fa-solid fa-plus"></i>
-              <p class="qte">0</p>
-              <i class="fa-solid fa-minus"></i>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-trash"></i>
-            </div>
+            <div class="actions">
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-trash"></i>
+              <i class="fa fa-minus"></i>
+              <span class="qte">0</span>
+              <i class="fa fa-plus"></i>
+          </div>
+          <button class="add-to-cart">Ajouter au panier</button>
           </div>
         </div>
       </div>
     </main>
 
     <footer>
-      <p class="rafpets">© 2023 Rafpets All Rights reserved</p>
+      <p class="rafpets">© 2023 Rafpets All Rights reserved.</p>
     </footer>
   </body>
   <script src="script.js"></script>
