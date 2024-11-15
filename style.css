@@ -21,7 +21,7 @@ body {
 
 .rafpets-header img {
     width: 100%;
-    max-width: 600px;
+    max-width: 200px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -170,4 +170,14 @@ footer {
 footer p {
     margin: 0;
     font-size: 1em;
+}
+
+/* Décaler la barre de recherche vers la gauche */
+.d-flex {
+    margin-right: 150px; /* Ajustez la valeur pour plus d'espace */
+}
+
+/* Optionnel : Ajustez la taille de la barre de recherche pour plus d'espace */
+.form-control {
+    width: 250px; /* Ajustez la largeur pour éviter de chevaucher le panier */
 }
